@@ -8,6 +8,7 @@ A real-time chat application built using **Golang**, **Fiber**, and **WebSocket*
 - **Golang** — Backend language
 - **Fiber** — Fast HTTP web framework
 - **WebSocket** — Real-time communication
+- **MySql** — Database SQL
 
 ---
 
