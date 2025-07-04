@@ -28,7 +28,7 @@ A real-time chat application built using **Golang**, **Fiber**, and **WebSocket*
 [View on DrawSQL](https://drawsql.app/teams/devmare/diagrams/web-chat)
 
 🌱 **SQL Seeder File**  
-[View Seeder on GitHub](https://github.com/eLDeDestroyer/golang-appChat-api/blob/main/files/app_chat.sql)
+[View Seeder on GitHub](https://github.com/eLDeDestroyer/golang-appChat-api/blob/main/files/app_chat%20.sql)
 
 ---
 
