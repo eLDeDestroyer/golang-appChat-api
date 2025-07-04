@@ -21,6 +21,17 @@ A real-time chat application built using **Golang**, **Fiber**, and **WebSocket*
 
 ---
 
+## 🗂️ Project Overview
+
+🧭 **ERD Visual Link**  
+[View on DrawSQL](https://drawsql.app/teams/devmare/diagrams/web-chat)
+
+🌱 **SQL Seeder File**  
+[View Seeder on GitHub](https://github.com/eLDeDestroyer/golang-appChat-api/blob/main/files/app_chat.sql)
+
+---
+
+
 ## 🔐 AUTHENTICATION
 
 ### 🔸 Register
@@ -300,52 +311,3 @@ A real-time chat application built using **Golang**, **Fiber**, and **WebSocket*
 ```
 ws://localhost:3000/ws/chat?room_id=8
 ```
-
-All users connected to the same `room_id` will receive real-time messages instantly.
-
----
-
-## 🗃️ Database Structure
-
-📥 SQL Schema:
-```sql
-CREATE TABLE `users`(
-    `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    `unique_number` SMALLINT NOT NULL,
-    `name` TEXT NOT NULL,
-    `username` TEXT NOT NULL,
-    `password` TEXT NOT NULL,
-    `last_login` DATETIME NOT NULL
-);
-ALTER TABLE
-    `users` ADD UNIQUE `users_unique_number_unique`(`unique_number`);
-CREATE TABLE `chats`(
-    `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    `text` TEXT NOT NULL,
-    `room_id` BIGINT NOT NULL,
-    `user_id` BIGINT NOT NULL
-);
-CREATE TABLE `room`(
-    `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY
-);
-CREATE TABLE `friends`(
-    `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    `name` BIGINT NOT NULL,
-    `friend` BIGINT NOT NULL,
-    `user_id` BIGINT NOT NULL,
-    `room_id` BIGINT NOT NULL
-);
-ALTER TABLE
-    `chats` ADD CONSTRAINT `chats_user_id_foreign` FOREIGN KEY(`user_id`) REFERENCES `users`(`id`);
-ALTER TABLE
-    `friends` ADD CONSTRAINT `friends_room_id_foreign` FOREIGN KEY(`room_id`) REFERENCES `room`(`id`);
-ALTER TABLE
-    `chats` ADD CONSTRAINT `chats_room_id_foreign` FOREIGN KEY(`room_id`) REFERENCES `room`(`id`);
-ALTER TABLE
-    `friends` ADD CONSTRAINT `friends_user_id_foreign` FOREIGN KEY(`user_id`) REFERENCES `users`(`id`);
-ALTER TABLE
-    `friends` ADD CONSTRAINT `friends_friend_foreign` FOREIGN KEY(`friend`) REFERENCES `users`(`id`);
-```
-
-🧭 ERD Visual Link:
-[View on DrawSQL](https://drawsql.app/teams/devmare/diagrams/web-chat)
