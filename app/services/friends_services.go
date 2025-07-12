@@ -6,7 +6,7 @@ import (
 )
 
 type FriendsService interface {
-	FindFriendUser(friendsId uint) (*model.Friend, error)
+	FindFriendUser(room_id uint, user_id uint) (*model.Friend, error)
 	AddFriendUser(number int, userId uint, name string) error
 	UpdateFriendUser(friendsId uint, friend *model.Friend) error
 	DeleteFriendUSer(friendsId uint) error

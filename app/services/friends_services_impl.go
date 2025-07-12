@@ -16,8 +16,8 @@ func NewFriendServiceImpl(friendRepository repositories.FriendsRepository) *Frie
 	}
 }
 
-func (service *FriendServiceImpl) FindFriendUser(friendsId uint) (*model.Friend, error) {
-	return service.friendRepository.FindFriend(friendsId)
+func (service *FriendServiceImpl) FindFriendUser(room_id uint, user_id uint) (*model.Friend, error) {
+	return service.friendRepository.FindFriend(room_id, user_id)
 }
 
 func (service *FriendServiceImpl) AddFriendUser(number int, userId uint, name string) error {

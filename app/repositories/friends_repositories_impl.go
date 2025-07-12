@@ -17,10 +17,10 @@ func NewFriendRepositoriesImpl(db *gorm.DB) *FriendRepositoriesImpl {
 	}
 }
 
-func (repo *FriendRepositoriesImpl) FindFriend(friendsId uint) (*model.Friend, error) {
+func (repo *FriendRepositoriesImpl) FindFriend(room_id uint, user_id uint) (*model.Friend, error) {
 	var friend model.Friend
 
-	err := repo.db.Table("friends").Where("id = ?", friendsId).First(&friend).Error
+	err := repo.db.Table("friends").Where("room_id = ? AND user_id = ?", room_id, user_id).First(&friend).Error
 	if err != nil {
 		return nil, errors.New("friend not found")
 	}
@@ -101,7 +101,7 @@ func (repo *FriendRepositoriesImpl) GetAllFriends(userId uint) ([]*dto.FriendsUs
 
 	err := repo.db.Table("friends").
 		Joins("JOIN users ON users.id = friends.friend").
-		Select("users.unique_number as unique_number, friends.name as name, friends.room_id as room_id, friends.id as id").
+		Select("users.unique_number as unique_number, friends.name as name, friends.room_id as room_id, users.id as id").
 		Where("friends.user_id = ?", userId).
 		Find(&friends).Error
 

@@ -16,7 +16,7 @@ func SetUpRoutes(app *fiber.App, userController controllers.UserController, frie
 	auth.Patch("/users/update", userController.UpdateUser)
 	auth.Get("/users/me", userController.GetUser)
 
-	auth.Get("/friend/:id", friendController.FindFriendUser)
+	auth.Get("/friend/:room_id", friendController.FindFriendUser)
 	auth.Post("/friend/add", friendController.AddFriendUser)
 	auth.Patch("/friend/update/:id", friendController.UpdateFriendUser)
 	auth.Delete("/friend/delete", friendController.DeleteFriendUser)

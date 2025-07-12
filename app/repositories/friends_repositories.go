@@ -6,7 +6,7 @@ import (
 )
 
 type FriendsRepository interface {
-	FindFriend(friendsId uint) (*model.Friend, error)
+	FindFriend(room_id uint, user_id uint) (*model.Friend, error)
 	GetFriendUserByNumber(number int) (*model.User, error)
 	SetRoomFriend() (uint, error)
 	AddFriend(user *model.Friend, friend *model.Friend) error

@@ -18,12 +18,13 @@ func NewFriendControllerImpl(friendService services.FriendsService) *FriendContr
 }
 
 func (controller *FriendControllerImpl) FindFriendUser(ctx *fiber.Ctx) error {
-	id, err := ctx.ParamsInt("id")
+	id, err := ctx.ParamsInt("room_id")
+	userId := ctx.Locals("userId").(uint)
 	if err != nil {
 		return helper.ErrorResponse(ctx, fiber.StatusBadRequest, err.Error())
 	}
 
-	data, err := controller.friendService.FindFriendUser(uint(id))
+	data, err := controller.friendService.FindFriendUser(uint(id), userId)
 	if err != nil {
 		return helper.ErrorResponse(ctx, fiber.StatusInternalServerError, err.Error())
 	}
